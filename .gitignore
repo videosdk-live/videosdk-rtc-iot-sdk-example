@@ -6,7 +6,9 @@
 *.ko
 *.obj
 *.elf
-
+# Ignore Build & Manage Components Folder
+build
+managed_components
 # Linker output
 *.ilk
 *.map

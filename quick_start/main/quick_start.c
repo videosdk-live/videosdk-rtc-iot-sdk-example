@@ -22,7 +22,7 @@ const char *meetingId = "MEETING_ID" ;
 // Task to create a meeting using the VideoSDK
 static void meeting_task(void *pvParameters)
 {
-    // const char *auth_token = (const char *)pvParameters;
+ 
 
     create_meeting_result_t result = create_meeting(token); // Create meeting using IoT SDK
 
@@ -98,7 +98,6 @@ void app_main(void)
     result_t result_susbcribe = startSubscribeAudio("your-subscriberId","your-subscriberToId");
 
     // Keep the session active for a defined duration (adjust as per your application use case)
-
     vTaskDelay(pdMS_TO_TICKS(100000));
 
     // Leave the meeting

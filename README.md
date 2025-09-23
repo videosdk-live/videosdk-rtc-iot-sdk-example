@@ -37,7 +37,8 @@ Follow these steps to run the Quick Start example:
 
 ### 1. Configure ESP-IDF enviorment 
 
-👉 For setting up **ESP-IDF**, follow only **Step 1** from the official [ESP-IDF Setup Guide](https://github.com/espressif/esp-idf).  
+👉 For setting up **ESP-IDF**, follow only **Step 1** from the from videosdk's [documentation](https://docs.videosdk.live/iot/guide/video-and-audio-calling-api-sdk/quickstart/quick-start#step-1-setup-for-esp-idf).
+
 ⚠️ Inside Step 1, you **do not need to run the project creation commands** — 
 ```
 // Create a esp-idf project
@@ -56,18 +57,43 @@ git clone https://github.com/videosdk-live/videosdk-rtc-iot-sdk-example.git
 ```
 ### 3: Add IoT SDK component
 
-Add the IoT SDK dependency to your ESP-IDF project. This includes all required libraries to use IoT SDK features in your project.  
+To integrate the IoT SDK component, clone the repository below.
 
 ```
-idf.py add-dependency videosdk/iot-sdk:^0.0.1
+git clone https://github.com/videosdk-live/IoTSdk
 ```
 
-### 4. Generate a token from [generate videosdk token](https://app.videosdk.live) and modify token variable in `quick_start.c` file
+After cloning, copy the component's local path and provide it in the `idf_component.yml` file as shown below.
+```
+dependencies:
+  IoTSdk: 
+    path: // Full local path of the component
+```
+
+### 4: Configure Dependencies
+
+Open your `idf_component.yml` file and add the required dependencies. Place them below your existing ones:
+
+```
+  // Add the following dependencies after your existing ones
+  mdns: '*'
+  espressif/esp_audio_codec: ~2.3.0
+  espressif/esp_codec_dev: ~1.3.4
+  espressif/esp_audio_effects: ~1.1.0
+  protocol_examples_common:
+    path: ${IDF_PATH}/examples/common_components/protocol_examples_common
+    ## Required IDF version
+  idf:
+    version: '>=4.1.0'
+  sepfy/srtp: ^2.3.0
+```
+
+### 5. Generate a token from [generate videosdk token](https://app.videosdk.live) and modify token variable in `quick_start.c` file
 ```
 const char *token = "GENRERATED_TOKEN"; // Your VideoSDK Authentication token
 ```
 
-#### 5. Configure Publisher and Subscriber IDs
+#### 6. Configure Publisher and Subscriber IDs
 
 - You can pass your your Ids or use any random ID for `your-publisherId` and `your-subscriberId`.  
 - For `your-subscriberToId`, pass the participant’s ID whose audio you want to subscribe to.
@@ -141,7 +167,7 @@ Understand the core components of our SDK:
 
 ## Documentation
 
-[IoT-SDK](https://docs.videosdk.live/iot/guide/video-and-audio-calling-api-sdk/concept-and-architecture)
+For more details, check out the [VideoSDK Documentation](https://docs.videosdk.live/iot/guide/video-and-audio-calling-api-sdk/concept-and-architecture)
 
 
 ## 📖 Examples

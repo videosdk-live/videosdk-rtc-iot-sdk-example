@@ -181,10 +181,6 @@ For more details, check out the [VideoSDK Documentation](https://docs.videosdk.l
 - [**iOS SDK Example**](https://github.com/videosdk-live/videosdk-rtc-ios-sdk-example)
 
 
-## 📝 Documentation
-
-Explore more and start building with our [**Documentation**](https://docs.videosdk.live/)
-
 ## 🤝 Join Our Community
 
 - **[Discord](https://discord.gg/Gpmj6eCq5u)**: Engage with the Video SDK community, ask questions, and share insights.

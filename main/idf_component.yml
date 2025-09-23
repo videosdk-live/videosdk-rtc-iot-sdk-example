@@ -1,7 +1,7 @@
 ## IDF Component Manager Manifest File
 dependencies:
   IoTSdk:
-    path: /Users/karanrajput/Downloads/IoTSdk
+    path: // Full local path of the component
   mdns: '*'
   espressif/esp_audio_codec: ~2.3.0
   espressif/esp_codec_dev: ~1.3.4

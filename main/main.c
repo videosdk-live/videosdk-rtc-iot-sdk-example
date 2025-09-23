@@ -16,13 +16,12 @@
 #include "protocol_examples_common.h"
 #include "videosdk.h"
 
-static const char *TAG = "VideoSDK";    // Logging tag
-const char *token = "GENRERATED_TOKEN"; // Your VideoSDK Authentication token
-const char *meetingId = "MEETING_ID" ; 
+static const char *TAG = "VideoSDK"; // Logging tag
+const char *token = "Your-Token";    // Your VideoSDK Authentication token
+char *meetingId;
 // Task to create a meeting using the VideoSDK
 static void meeting_task(void *pvParameters)
 {
- 
 
     create_meeting_result_t result = create_meeting(token); // Create meeting using IoT SDK
 
@@ -30,7 +29,7 @@ static void meeting_task(void *pvParameters)
     {
         ESP_LOGI(TAG, "Created meeting roomId = %s", result.room_id);
         meetingId = result.room_id; // Set global meetingId`
-        free(result.room_id); // Free allocated memory
+        free(result.room_id);       // Free allocated memory
     }
     else
     {
@@ -92,17 +91,14 @@ void app_main(void)
     printf("Result: %d\n", init_result);
 
     // Start publishing audio stream
-    result_t result_publish = startPublishAudio("your-publisherId");
-
+    result_t result_publish = startPublishAudio("Your-PublisherId"); // change the publisherId
+    printf("Result:%d\n", result_publish);
     // Start subscribing to an audio stream
-    result_t result_susbcribe = startSubscribeAudio("your-subscriberId","your-subscriberToId");
-
-    // Keep the session active for a defined duration (adjust as per your application use case)
-    vTaskDelay(pdMS_TO_TICKS(100000));
+    result_t result_susbcribe = startSubscribeAudio("Your-SubscriberId", "Your-SubscribeToId"); // change the SubscriberId and SubscribeToId
+    printf("Result:%d\n", result_susbcribe);
 
     // Leave the meeting
-    result_t result_leave = leave();
-    printf("Result:%d\n", result_susbcribe);
+    // result_t result_leave = leave();
 
     // Keep main loop alive
     while (1)
